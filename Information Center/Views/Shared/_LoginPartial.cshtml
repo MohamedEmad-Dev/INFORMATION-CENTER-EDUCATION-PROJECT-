@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNet.Identity
+@using Information_Center.Models
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        var _db = new ApplicationDbContext();
+        var UserId = User.Identity.GetUserId();
+        var user = _db.Users.Where(u => u.Id == UserId).SingleOrDefault();
+        @Html.AntiForgeryToken()
+                
+        <style>
+            .log-in-out ul li img {
+                width: 45px;
+                object-fit: contain;
+                height: 45px;
+                border-radius: 50%;
+            }
+        </style>
+        <div class="log-in-out">
+            <ul>
+                @if (User.IsInRole("Admins"))
+                {
+                    <li>
+                        @Html.ActionLink(user.Name, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+
+                }else if (User.IsInRole("Student"))
+                {
+
+
+                    <li>
+                        @if (!String.IsNullOrEmpty(user.ImagePath))
+                        {
+
+                        <img src="@Url.Content(user.ImagePath)"  />
+                        }
+                        else
+                        {
+                            <img src="~/images/users/default.png" />
+                        }
+                        @Html.ActionLink(user.Name, "UserProfile", "User", routeValues: new { id = User.Identity.GetUserId() }, htmlAttributes: new { title = "Manage" })
+                    </li>
+
+                }else if (User.IsInRole("Instructor"))
+                {
+                    <li>
+                        @Html.ActionLink(user.Name, "InstructorProfile", "Instructor", routeValues: new { id = User.Identity.GetUserId() }, htmlAttributes: new { title = "Manage" })
+                    </li>
+
+                }
+                <li><a class="active" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <div class="log-in-out">
+
+        <ul>
+            <li>@Html.ActionLink("إنشاء حساب", "Register", "Account")</li>
+            <li>@Html.ActionLink("تسجيل الدخول", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "active" })</li>
+        </ul>
+    </div>
+
+}

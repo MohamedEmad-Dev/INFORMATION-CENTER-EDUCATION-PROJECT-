@@ -1,0 +1,88 @@
+body {
+    background-image: url('../images/images\ \(7\).jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+a{
+  text-decoration: none;
+
+}
+.logo {
+    margin: 0 auto;
+    width: 260px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 58px;
+}
+.overflow {
+    width: 100%;
+    height: 100%;
+    background: #0000006e;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.logo img {
+    width: 100%;
+    object-fit: contain;
+}
+.login-form {
+    border-radius: 10px;
+    background: rgb(18, 110, 130);
+    color: white;
+    width: 60%;
+    height: 370px;
+    margin: 100px auto 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 30px;
+}
+    .login-form .form-control {
+        width: 100%;
+    }
+.login-form a{
+
+    text-align: center;
+    display: block;
+    margin-bottom: 15px;
+}
+    .login-form .submit-form {
+        color: white;
+        background: #51c4d3;
+        padding: 10px;
+        border: none;
+        display: block;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+a.register-btn {
+    color: white;
+    border: 1px solid #51c4d3;
+    padding: 10px;
+    transition: 0.2s;
+}
+a.register-btn:hover{
+    background-color: #51c4d3;
+    color: white;
+}
+a.forget-btn {
+    color: white;
+}
+.back-link {
+    background: #126e82;
+    width: 200px;
+    display: block;
+    color: white;
+    padding: 10px;
+    margin-left: 20%;
+    text-align: center;
+}
+.back-link:hover{
+    color: white;
+}

@@ -1,0 +1,189 @@
+﻿@model Information_Center.viewModel.HomePageViewModel
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+
+}
+<!-- Start cursol -->
+<div class="slider">
+    <img src="~/Content/student-css/images/images (7).jpeg" alt="" />
+    <div class="overlay">
+        <div class="container">
+            <h1>مرحبا بك في كنز العلوم .....</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+                ullam in reprehenderit consectetur odio, ex exercitationem quae
+                mollitia ipsum saepe, nesciunt blanditiis est ad laborum sint ipsam
+                consequuntur modi sapiente.
+            </p>
+            <a href="#">عرض جميع الكورسات</a>
+            <a href="#">للحجز</a>
+        </div>
+    </div>
+</div>
+<!-- End cursol -->
+<!-- About Us -->
+<div class="about-us" id="#About-Us">
+    <h1>من نحن ؟</h1>
+    <div class="container" data-aos="fade-in">
+        <div class="row">
+            <div class="about-us-details">
+                <img src="~/Content/Photo_1625953617841.png" alt="">
+                <h2>Information Center</h2>
+                <div class="details">
+                    <p>
+                        هو احدي المواقع المصممة لستهيل المعاملة بين الطالب والمعلم  من خلاله يمكن للطالب الحصول على جميع مواده الدراسية من جميع مدرسين هذة المواد
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About Us -->
+<!-- Courses Slider -->
+<div class="courses-slider">
+    <h1>بعض المدرسين</h1>
+    <div class="container" data-aos="fade-zoom-in"
+             data-aos-easing="ease-in-back"
+             data-aos-delay="300"
+             data-aos-offset="0">
+        
+        <div class="row responsive">
+            <div class="col-md-4">
+                <div class="course">
+                    <a class="details" href="">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                    <div class="course-img">
+                        <img src="~/Content/student-css/images/hh.jpg" alt="" />
+                    </div>
+                    <h3>Mr Ahmed</h3>
+                    <small>Instructor</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <a class="details" href="">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                    <div class="course-img">
+                        <img src="~/Content/student-css/images/hh.jpg" alt="" />
+                    </div>
+                    <h3>Mr Ahmed</h3>
+                    <small>Instructor</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <a class="details" href="">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                    <div class="course-img">
+                        <img src="~/Content/student-css/images/hh.jpg" alt="" />
+                    </div>
+                    <h3>Mr Ahmed</h3>
+                    <small>Instructor</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <a class="details" href="">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                    <div class="course-img">
+                        <img src="~/Content/student-css/images/hh.jpg" alt="" />
+                    </div>
+                    <h3>Mr Ahmed</h3>
+                    <small>Instructor</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <a class="details" href="">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                    <div class="course-img">
+                        <img src="~/Content/student-css/images/hh.jpg" alt="" />
+                    </div>
+                    <h3>Mr Ahmed</h3>
+                    <small>Instructor</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="course">
+                    <a class="details" href="">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                    <div class="course-img">
+                        <img src="~/Content/student-css/images/hh.jpg" alt="" />
+                    </div>
+                    <h3>Mr Ahmed</h3>
+                    <small>Instructor</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Courses Slider -->
+<!-- Courses Slider -->
+<div class="courses-slider">
+    <h1>بعض الكورسات</h1>
+    <div class="container" data-aos="fade-zoom-in"
+             data-aos-easing="ease-in-back"
+             data-aos-delay="300"
+             data-aos-offset="0">
+        <div class="row responsive">
+            @foreach(var course in Model.Courses)
+            {
+
+                <div class="col-md-4">
+                    <div class="course">
+                        <a class="details" href="@Url.Action("Details","Course",new { id = course.Id})">للمزيد من التفاصيل <i class="fa fa-angle-double-right"></i></a>
+                        <div class="course-img">
+                            @if (String.IsNullOrEmpty(course.ImagePath))
+                            {
+                                <img src="~/images/courses/default.png" />
+                            }
+                            else
+                            {
+
+                                        <img src="@Url.Content(course.ImagePath)" alt="" />
+                            }
+                        </div>
+                        <h3>@course.Title</h3>
+                        <small>@course.Instructor.Name</small>
+                    </div>
+                </div>
+            }
+           
+        </div>
+    </div>
+</div>
+<!-- End Courses Slider -->
+<!-- About section -->
+<div class="about-users">
+    <h1>الأقسام</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" data-aos="fade-right">
+                <div class="section">
+                    <i class="fa fa-book"></i>
+                    <h3>الكورسات</h3>
+                    <h4>@Model.Courses.Count()</h4>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-out-up">
+                <div class="section">
+                    <i class="fa fa-users"></i>
+                    <h3>الطلاب</h3>
+                    <h4>@Model.student</h4>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-left">
+                <div class="section">
+                    <i class="fa fa-users"></i>
+                    <h3>المعلمين</h3>
+                    <h4>@Model.instructors</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        AOS.init({
+            offset: 100,
+            duration: 1000
+        });
+    </script>
+}

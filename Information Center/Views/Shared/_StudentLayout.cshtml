@@ -1,0 +1,154 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Globalization;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/student-css")
+    @Styles.Render("~/Content/plugins")
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/plugins")
+    <style>
+        a:focus, a:hover {
+            text-decoration: none;
+        }
+
+        a:focus, a:hover {
+            text-decoration: none;
+        }
+
+        .main-links {
+            background: var(--blueColor);
+        }
+
+            .main-links ul {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0px;
+            }
+
+            .main-links li {
+                padding: 10px 0;
+                transition: all 0.3s ease;
+                width: 100%;
+                text-align: center;
+            }
+
+                .main-links li:hover, .main-links li.active {
+                    background: var(--lightblue);
+                }
+
+            .main-links ul li a {
+                color: white;
+            }
+    </style>
+</head>
+
+<body>
+    @{ var s = DateTime.Now.ToString("dd dddd , MMMM, yyyy", new CultureInfo("ar-AE")); }
+    <!-- Header -->
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <a href="@Url.Action("Index","Home")">
+                    <img src="~/Content/Photo_1625953617841.png" />
+                </a>
+            </div>
+            <div>
+                @s
+            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <!-- End Header -->
+    @if (User.IsInRole("Student"))
+    {
+        <div class="main-links">
+            <div class="container">
+                <ul>
+                    <li class="@ViewBag.active1"><a href="@Url.Action("Index","Student")">My Courses</a></li>
+                    <li class="@ViewBag.active2"><a href="">My Materials</a></li>
+                    <li class="@ViewBag.active3"><a href="">My Assigments</a></li>
+                    <li class="@ViewBag.active4"><a href="">My Grade</a></li>
+                </ul>
+            </div>
+        </div>
+    }
+    else if (User.IsInRole("Instructor"))
+    {
+        <div class="main-links">
+            <div class="container">
+                <ul>
+                    <li class="@ViewBag.active1"><a href="@Url.Action("Index","Course")">My Courses</a></li>
+                    <li class="@ViewBag.active2"><a href="">My Materials</a></li>
+                    <li class="@ViewBag.active3"><a href="">My Assigments</a></li>
+                    <li class="@ViewBag.active4"><a href="@Url.Action("GetInstructorStudents","Instructor")">My Students</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    }
+    <!-- Searching section -->
+    <div class="searching-sec">
+        <div class="container">
+            <div class="search-control">
+                <button><i class="fa fa-search"></i></button>
+                <input type="search" class="form-control" placeholder="ابحث......." />
+            </div>
+        </div>
+    </div>
+
+    <!-- End Searching section -->
+
+    @RenderBody()
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-4 col-sm-2">
+                <div class="footer-sec">
+                    <h2>Services</h2>
+                    <ul>
+                        <li><a href="#About-Us">About Us</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-2">
+                <div class="footer-sec">
+                    <h2>Polices</h2>
+                    <ul>
+                        <li><a href="">Term of use</a></li>
+                        <li><a href="">privecy</a></li>
+                        <li><a href="">Refund Policy</a></li>
+                        <li><a href="">Billing System</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-2">
+                <div class="footer-sec">
+                    <h2>qucik access</h2>
+                    <ul>
+                        <li><a href="">my courses</a></li>
+                        <li><a href="">my materials</a></li>
+                        <li><a href="">my assigments</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer -->
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/plugins/slick/slick-script.js"></script>
+</body>
+
+</html>

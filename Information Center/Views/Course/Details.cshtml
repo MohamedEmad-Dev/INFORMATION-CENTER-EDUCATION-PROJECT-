@@ -1,0 +1,66 @@
+﻿@model Information_Center.Models.Course
+@{
+    ViewBag.Title = "Details";
+    ViewBag.active1 = "active";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+@Styles.Render("~/Content/course")
+<!-- Start Course View -->
+<div class="container">
+    <div class="courseView">
+        @if(ViewBag.Result != null)
+            {
+                <h1>ViewBag.Result</h1>
+            }
+        @if (!String.IsNullOrEmpty(Model.ImagePath))
+        {
+            <img src="@Url.Content(Model.ImagePath)" alt="" data-aos="fade-right">
+            
+        }
+        else
+        {
+           <img src="~/images/courses/default.png" alt="" data-aos="fade-right">
+
+        }
+
+        
+
+        <div class="content" data-aos="fade-left">
+            <h1>@Model.Title</h1>
+
+            <p>
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Description))
+
+
+            </p>
+            @if (User.IsInRole("Instructor"))
+            {
+                <div class="content-cotroller" data-aos="zoom-out-up">
+                    <a href="@Url.Action("Edit",new { id = Model.Id})" class="edit">Edit <i class="fa fa-pencil-square-o"></i></a>
+                    <a href="@Url.Action("Delete",new { id = Model.Id})" class="delete">Delete <i class="fa fa-trash"></i></a>
+                </div>
+            }
+            else if (User.IsInRole("Student"))
+            {
+
+
+                <a href="@Url.Action("Enroll")">Enroll</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Login","Account")">Go to login to enroll</a>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- End Course View -->
+
+@section scripts{
+    <script>
+        AOS.init({
+            offset: 100,
+            duration: 2000,
+        });
+    </script>
+}

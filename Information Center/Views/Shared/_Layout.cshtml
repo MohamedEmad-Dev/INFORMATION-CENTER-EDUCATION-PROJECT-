@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap">
+    <link rel="stylesheet" href="~/Content/student-css/fonts/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/plugins/aos/css/aos.css" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/adminView")
+
+    @*@Styles.Render("~/Content/plugins/aos/css")*@
+    <title>@ViewBag.Title - Information Center</title>
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="@Url.Action("Index","Home")">
+                <div class="sidebar-brand">
+                    <!-- <h1><span class="fa fa-github"></span> Hello</h1> -->
+                    <img class="logo-png" src="~/images/site/logo.png" alt="">
+
+                </div>
+            </a>
+            <i class="fa fa-close"></i>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="@Url.Action("GetAllStudents", "Admin")" class="@ViewBag.active1"><i class="fa fa-users"></i> الطلاب</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Course")" class="@ViewBag.active2"><i class="fa fa-newspaper-o"></i> المقررات</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("GetAllInstructors", "Admin")" class="@ViewBag.active3"><i class="fa fa-users"></i> المعلمين</a>
+                </li>
+                <li>
+                    <a href="#" id="s" class="@ViewBag.active4"><i class="fa fa-list"></i> الاحداث</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- main content -->
+    <div class="main-content" id="main-content">
+        <div class="header" id="header">
+            <div class="container">
+                <div class="content">
+
+                    <div class="header-title">
+                        <h1>
+                            <span id="nav-toggle" class="fa fa-bars"></span>
+                            <a class="header-link" href="@Url.Action("Index","Admin")"> Dashboard </a>
+                        </h1>
+                    </div>
+                    <div class="user-wrapper">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+
+            <div class="container">
+
+                @RenderBody()
+            </div>
+
+        </main>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/adminView")
+    @*<script src="~/Content/adminView/js/admin.js"></script>*@
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>

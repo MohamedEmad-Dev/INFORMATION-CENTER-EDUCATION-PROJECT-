@@ -1,0 +1,56 @@
+h1.courses-header {
+  margin-bottom: 15px;
+}
+a.add-course-link {
+  background: var(--mainColor);
+  padding: 10px;
+  margin-bottom: 45px;
+  display: block;
+  width: 170px;
+  text-align: center;
+  color: var(--whiteColor);
+  box-shadow: 1px 5px 7px 0px #00000042;
+}
+.course-card {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 33px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px 0px #00000054;
+  margin-bottom: 45px;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 15px;
+}
+.course-info small {
+  font-weight: 100;
+  color: gray;
+}
+
+.course-info p {
+  max-width: 500px;
+}
+.course-info a {
+  background: var(--mainColor);
+  width: 150px;
+  text-align: center;
+  color: var(--whiteColor);
+  padding: 10px;
+}
+.instructor-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.instructor-info img {
+  border-radius: 50%;
+}
+main:first-child {
+  color: red;
+}

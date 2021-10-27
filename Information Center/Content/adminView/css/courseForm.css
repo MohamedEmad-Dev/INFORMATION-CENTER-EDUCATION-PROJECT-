@@ -1,0 +1,79 @@
+/* .new-course-form label,
+.new-course-form input {
+  display: block;
+} */
+.new-course-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.new-course-form {
+  background: #ffff;
+  padding: 20px;
+}
+.new-course-form form div {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.course-img {
+  font-size: 15px;
+  background: #dcdcdcdd;
+  width: 150px;
+  display: flex;
+  height: 150px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.f-control input {
+  transition: 0.2s;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #bdbdbd;
+}
+.f-control textarea {
+    resize: none;
+    height: 185px;
+}
+
+.f-control input:focus {
+  outline: none;
+  border: 1px solid var(--mainColor);
+  box-shadow: 0px 0px 6px 0px var(--mainColor);
+}
+button.btn-add-course {
+  padding: 10px;
+  width: 178px;
+  text-align: center;
+  margin: 0 auto;
+  background: var(--mainColor);
+  border: none;
+  color: white;
+  box-shadow: 0px 3px 9px 0px #00000052;
+}
+
+/*input.image-view {
+    display: none;
+}*/
+input#image {
+    display: none;
+}
+img.my-img {
+  height: 100%;
+  object-fit: cover;
+}
+div#course-img label {
+  position: absolute;
+  bottom: -35px;
+  width: 100%;
+  text-align: center;
+  background: var(--darkGray);
+  color: var(--whiteColor);
+  padding: 5px;
+}

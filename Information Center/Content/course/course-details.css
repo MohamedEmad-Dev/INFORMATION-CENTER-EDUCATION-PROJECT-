@@ -1,0 +1,88 @@
+﻿.courseView {
+    margin: 50px 0;
+    box-shadow: 0px 0px 7px #00000026;
+    padding: 23px;
+}
+
+    .courseView img {
+        width: 250px;
+        object-fit: contain;
+        height: 235px;
+    }
+
+.courseView {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+    .courseView p {
+        width: 300px;
+    }
+
+@media only screen and (max-width: 426px) {
+    .courseView {
+        flex-direction: column;
+    }
+
+        .courseView h1 {
+            text-align: center;
+        }
+
+        .courseView .content p {
+            width: 250px;
+        }
+}
+
+@media only screen and (max-width: 321px) {
+    .courseView .content p {
+        width: 150px;
+    }
+
+    .courseView img {
+        width: 185px;
+        object-fit: contain;
+        height: 165px;
+    }
+}
+
+@media only screen and (max-width: 7769px) {
+    .courseView .content p {
+        width: 250px;
+    }
+}
+
+.courseView .content .content-cotroller {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+    .courseView .content .content-cotroller a {
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+        transition: all 0.2s ease;
+    }
+
+        .courseView .content .content-cotroller a i {
+            margin-left: 15px;
+        }
+
+        .courseView .content .content-cotroller a.edit {
+            color: white;
+            background-color: green;
+            border: 1px solid green;
+        }
+
+        .courseView .content .content-cotroller a.delete {
+            border: 1px solid transparent;
+            color: red;
+        }
+
+            .courseView .content .content-cotroller a.delete:hover {
+                border: 1px solid red;
+                border-radius: 5px;
+            }

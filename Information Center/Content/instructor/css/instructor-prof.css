@@ -1,0 +1,30 @@
+.user-courses .add-course {
+    display: block;
+    margin-bottom: 30px;
+    background: #126e82;
+    color: white;
+    width: 165px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+.user-courses .add-course i {
+   margin-left: 10px;
+    
+}
+.user-courses .course-info .overlay {
+  
+    flex-direction: column;
+}
+.user-courses .course-info .overlay a {
+    margin-bottom: 15px;
+}
+.user-courses .course-info .overlay a i {
+    margin-left: 15px;
+}
+
+.user-courses .course-info .overlay .delete{
+    background-color: transparent;
+    color: red;
+}

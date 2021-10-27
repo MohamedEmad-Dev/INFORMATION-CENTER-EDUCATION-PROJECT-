@@ -1,0 +1,141 @@
+﻿
+@model Information_Center.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<style>
+    .course-img {
+        font-size: 15px;
+        background: #dcdcdcdd;
+        width: 150px;
+        display: flex;
+        height: 150px;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    div#course-img label {
+        position: absolute;
+        bottom: -35px;
+        width: 100%;
+        text-align: center;
+        background: var(--darkGray);
+        color: var(--whiteColor);
+        padding: 5px;
+    }
+
+    img.my-img {
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+</style>
+<div class="Register-sec" style="padding:20px;">
+
+    <div class="container">
+        <h2>@ViewBag.Title.</h2>
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Create a new account.</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email)
+
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserType)
+
+                @Html.DropDownList("UserType", null, htmlAttributes: new { @class = "form-control" })
+
+            </div>
+            @*<div class="result-student">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Gmail)
+
+                    @Html.TextBoxFor(m => m.Gmail, new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PhoneNumber)
+
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Faculty)
+
+                    @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control" })
+
+                </div>
+
+            </div>*@
+            <div class="course-img" id="course-img">
+                <label for="ImageFile"><i class="fa fa-upload"></i> Upload image</label>
+                    <img src="" class="my-img" alt="" id="upload-img">
+
+                
+            </div>
+            @Html.TextBoxFor(m => m.ImageFile, htmlAttributes: new { type = "file", style = "display:none;" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password)
+
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword)
+
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('select[name="UserType"]').on("change", function () {
+                var a = $(this).find("option:selected").text();
+                if (a == "Student") {
+                    console.log("Weeeeeeee");
+
+                } else {
+                    console.log("nooo");
+
+                }
+            });
+    </script>
+    <script>
+        $(function () {
+            $("#ImageFile").change(function (event) {
+                var x = URL.createObjectURL(event.target.files[0]);
+                $("#upload-img").attr("src", x);
+            });
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

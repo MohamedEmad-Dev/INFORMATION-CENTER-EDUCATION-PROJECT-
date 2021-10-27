@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Information_Center.Models.ApplicationUser>
+@{
+    ViewBag.Title = "GetAllInstructors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="recent-grid">
+    <div class="container">
+        <div class="row">
+
+            <div class="projects">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>المعلمين</h2>
+                        <button>للمزيد <i class="fa fa-arrow-right"></i></button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                        <td>@Html.DisplayNameFor(model => model.UserName)</td>
+                                        <td>@Html.DisplayNameFor(model => model.UserType)</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var user in Model)
+                                    {
+                                        <tr>
+                                            <td>@user.Email</td>
+                                            <td>@user.Name</td>
+                                            <td>@user.UserType</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-md-4">
+
+                    <div class="students">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>New students</h2>
+                                <button>See all <i class="fa fa-arrow-right"></i></button>
+                            </div>
+                            <div class="card-body">
+                                <div class="student">
+                                    <div class="profile">
+                                        <img src="images/PicsArt_01-06-11.13.24.jpg" width="40px" height="40px" alt="" />
+                                        <div class="info">
+                                            <h4>Mohamed E. Hamdy</h4>
+                                            <small>web developer</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="student">
+                                    <div class="profile">
+                                        <img src="images/PicsArt_01-06-11.13.24.jpg" width="40px" height="40px" alt="" />
+                                        <div class="info">
+                                            <h4>Mohamed E. Hamdy</h4>
+                                            <small>web developer</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="student">
+                                    <div class="profile">
+                                        <img src="images/PicsArt_01-06-11.13.24.jpg" width="40px" height="40px" alt="" />
+                                        <div class="info">
+                                            <h4>Mohamed E. Hamdy</h4>
+                                            <small>web developer</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="student">
+                                    <div class="profile">
+                                        <img src="images/PicsArt_01-06-11.13.24.jpg" width="40px" height="40px" alt="" />
+                                        <div class="info">
+                                            <h4>Mohamed E. Hamdy</h4>
+                                            <small>web developer</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>
